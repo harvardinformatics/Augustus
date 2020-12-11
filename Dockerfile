@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND="noninteractive" TZ="Europe/Berlin"
 
 # Install required packages
 RUN apt-get update
-RUN apt-get install -y build-essential wget git autoconf
+RUN apt-get install -y build-essential wget autoconf
 
 # Install dependencies for AUGUSTUS comparative gene prediction mode (CGP)
 RUN apt-get install -y libgsl-dev libboost-all-dev libsuitesparse-dev liblpsolve55-dev
@@ -29,15 +29,15 @@ RUN apt-get install -y --no-install-recommends python3-biopython
 
 # Install hal - required by homGeneMapping 
 # execute the commented out code if you want to use this program - see auxprogs/homGeneMapping/Dockerfile
-#RUN apt-get install -y libhdf5-dev
-#RUN git clone https://github.com/benedictpaten/sonLib.git
+#RUN apt-get install -y libhdf5-dev pkg-config
 #WORKDIR /root/sonLib
-#RUN make
-#WORKDIR /root
-#RUN git clone https://github.com/ComparativeGenomicsToolkit/hal.git
+## 2020-11-16 snapshot
+#RUN wget -O - https://github.com/ComparativeGenomicsToolkit/sonLib/archive/dd3aa0c.tar.gz | tar --strip-components=1 -xzf -
+#RUN make -j
 #WORKDIR /root/hal
-#ENV RANLIB=ranlib
-#RUN make
+# 2020-08-21 snapshot
+#RUN wget -O - https://github.com/ComparativeGenomicsToolkit/hal/archive/f8f3fa2.tar.gz | tar --strip-components=1 -xzf -
+#RUN make -j
 #ENV PATH="${PATH}:/root/hal/bin"
 
 # Clone AUGUSTUS repository
