@@ -29,16 +29,16 @@ RUN apt-get install -y --no-install-recommends python3-biopython
 
 # Install hal - required by homGeneMapping 
 # execute the commented out code if you want to use this program - see auxprogs/homGeneMapping/Dockerfile
-#RUN apt-get install -y libhdf5-dev pkg-config
-#WORKDIR /root/sonLib
+RUN apt-get install -y libhdf5-dev pkg-config
+WORKDIR /root/sonLib
 ## 2020-11-16 snapshot
-#RUN wget -O - https://github.com/ComparativeGenomicsToolkit/sonLib/archive/dd3aa0c.tar.gz | tar --strip-components=1 -xzf -
-#RUN make -j
-#WORKDIR /root/hal
+RUN wget -O - https://github.com/ComparativeGenomicsToolkit/sonLib/archive/dd3aa0c.tar.gz | tar --strip-components=1 -xzf -
+RUN make -j
+WORKDIR /root/hal
 # 2020-08-21 snapshot
-#RUN wget -O - https://github.com/ComparativeGenomicsToolkit/hal/archive/f8f3fa2.tar.gz | tar --strip-components=1 -xzf -
-#RUN make -j
-#ENV PATH="${PATH}:/root/hal/bin"
+RUN wget -O - https://github.com/ComparativeGenomicsToolkit/hal/archive/f8f3fa2.tar.gz | tar --strip-components=1 -xzf -
+RUN make -j
+ENV PATH="${PATH}:/root/hal/bin"
 
 # Clone AUGUSTUS repository
 ADD / /root/augustus
